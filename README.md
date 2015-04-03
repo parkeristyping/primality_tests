@@ -12,17 +12,9 @@ I encourage you to add your own primality tests! And please feel free to submit 
 
 The file "benchmarking.rb" can be used to perform benchmarking of the primality tests against one another. By default, the benchmarking test does the following:
 
-1. Calls primality test on static list of 100 primes (max 10 digits)
-2. Calls primality test on static list of 100
-3. Returns benchmarking values and pass/fail
-
-Alternatively, the user can define a custom test:
-
-1. Generate (user input) random integers '2..(user input)', stored statically as array
-2. For each test specified by user, runs that test's prime function for each member of the array of ints.
-3. Compares result to trial division to test for accuracy and produce pass/fail
-
-Note that in the custom test, trial division is always performed, as it is used to check the output from other 
+1. Generate test sample of user-input number of random primes and composites in range '1..(user input)'
+2. For each primality test selected by the user, run that test's prime function for each member of the sample generated in step 1
+3. For each primality test, output real elapsed time, as well as whether or not the test correctly identified primes and composites for the tested sample
 
 So, to run the tests on your machine:
 
@@ -32,5 +24,3 @@ So, to run the tests on your machine:
 
 TODO:
 * Clean up my messy hash structure.
-* Format benchmarking output as human readable.
-* Add accuracy check by checking each method against some method that has been demonstrated to be accurate
