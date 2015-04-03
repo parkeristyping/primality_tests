@@ -22,5 +22,6 @@ So, to run the tests on your machine:
 3. Run 'benchmarking.rb'
 
 TODO: Clean up my messy hash structure!
+
 TODO: Format benchmarking output as human readable.
 TODO: Add accuracy check by checking each method against some method that has been demonstrated to be accurate
