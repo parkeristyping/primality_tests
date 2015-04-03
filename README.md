@@ -22,5 +22,18 @@ So, to run the tests on your machine:
 2. Add any primality tests you want to benchmark to the primality_tests directory (NOTE: As explained above, be sure that 'prime?(n)' is defined as 'name_of_primality_test(n)' and file is 'name_of_primality_test.rb')
 3. Run 'benchmarking.rb'
 
+# Results
+
+So far, Seph's trial division implementation is *destroying* everything else.
+
+Here's some sample output for a test with 5 random primes and 5 random composites:
+
+miller_rabin >>> Seconds elapsed: 14.499 >>> ID'ed all primes? true >>> ID'ed all composites? true
+sieve_of_eratosthenes >>> Seconds elapsed: 2.585 >>> ID'ed all primes? true >>> ID'ed all composites? true
+trial_division >>> Seconds elapsed: 0.001 >>> ID'ed all primes? true >>> ID'ed all composites? true
+trial_division_with_array >>> Seconds elapsed: 0.001 >>> ID'ed all primes? true >>> ID'ed all composites? true
+
+It would be interesting to learn more about why the "fast" probabilistic method is so slow. Are there sluggish functions I'm unwittingly calling?
+
 TODO:
 * Clean up my messy hash structure.
