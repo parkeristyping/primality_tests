@@ -21,6 +21,6 @@ So, to run the tests on your machine:
 2. Add any algorithms you want to the primality_tests directory (NOTE: As explained above, be sure that 'prime?(n)' is defined as 'name_of_primality_test(n)' and file is 'name_of_primality_test.rb')
 3. Run 'benchmarking.rb'
 
-TODO: Clean up my messy hash structure!
-TODO: Format benchmarking output as human readable.
+TODO: Clean up my messy hash structure! </br>
+TODO: Format benchmarking output as human readable. </br>
 TODO: Add accuracy check by checking each method against some method that has been demonstrated to be accurate
