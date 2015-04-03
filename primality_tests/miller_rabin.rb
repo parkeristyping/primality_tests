@@ -43,6 +43,6 @@ def miller_rabin_prime?(n,k)
 end
 
 # Implement with k = 5
-def prime?(n)
+def miller_rabin(n)
   miller_rabin_prime?(n,5)
 end
