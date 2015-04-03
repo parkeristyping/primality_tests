@@ -2,7 +2,21 @@
 # Author: Parker Lawrence
 
 require 'benchmark'
+require 'prime'
 require 'pry'
+
+# Set list of primes
+prime_list = Prime.take(100000)
+composite_list = []
+
+prime_list.inject(1) do |start, prime|
+  if start != prime
+    ((start..(prime-1)).to_a).each {|i|
+      composite_list << i
+    }
+  end
+  prime + 1
+end
 
 # Determine what tests user wants to run
 test_names = []
@@ -22,39 +36,43 @@ test_names.each {|current_test|
 }
 
 # Gather other information from user
-puts "How many ints to test?"
-num_ints_to_test = gets.chomp.to_i
-puts "Largest possible int to test?"
-max_int_to_test = gets.chomp.to_i
-
-# Generate array of ints to test
-ints_to_test = []
-range = (1..num_ints_to_test)
-(1..num_ints_to_test).each {|i|
-  ints_to_test << rand(2..max_int_to_test)
-}
-
-# Manual addition
-puts ints_to_test.inspect
-
-add_num = true
-while add_num
-  puts "Would you like to add a specific number? (y/n)"
-  answer = gets.chomp
-  if answer == "y"
-    puts "Enter number:"
-    ints_to_test << gets.chomp.to_i
-  else
-    add_num = false
-  end
+puts "How many random primes to test?"
+num_primes_to_test = gets.chomp.to_i
+puts "How many random composites to test?"
+num_composites_to_test = gets.chomp.to_i
+puts "Set a max value? (y/n)"
+if gets.chomp == "y"
+  puts "What is the max value?"
+  max_value = gets.chomp.to_i
 end
 
+# Apply max_value
+if max_value
+  prime_list.collect! {|n| n if n <= max_value}
+  composite_list.collect! {|n| n if n <= max_value}
+end
+
+# Generate array of ints to test
+primes_to_test = []
+composites_to_test = []
+(1..num_primes_to_test).each {primes_to_test << prime_list.sample}
+(1..num_composites_to_test).each {composites_to_test << composite_list.sample}
+
 # run a test given test name
-def run_test(tests, ints_to_test, current_test_name)
+def run_test(tests, primes_to_test, composites_to_test, current_test_name)
   require "./primality_tests/" + current_test_name + ".rb"
   tests[current_test_name.to_sym][:result] = []
-  ints_to_test.each {|int|
-    tests[current_test_name.to_sym][:result] << send(current_test_name, int)
+  tests[current_test_name.to_sym][:prime_pass?] = true
+  tests[current_test_name.to_sym][:composite_pass?] = true
+  primes_to_test.each {|i|
+    result = send(current_test_name, i)
+    tests[current_test_name.to_sym][:result] << result
+    tests[current_test_name.to_sym][:prime_pass?] = false unless result
+  }
+  composites_to_test.each {|i|
+    result = send(current_test_name, i)
+    tests[current_test_name.to_sym][:result] << result
+    tests[current_test_name.to_sym][:composite_pass?] = false if result
   }
 end
 
@@ -62,9 +80,7 @@ end
 tests.each {|current_test|
   if current_test[1][:test?]
     current_test[1][:benchmark] = []
-    current_test[1][:benchmark] = Benchmark.measure {run_test(tests, ints_to_test, current_test[1][:name])}
+    current_test[1][:benchmark] = Benchmark.measure {run_test(tests, primes_to_test, composites_to_test, current_test[1][:name])}
+    puts "#{current_test[1][:name]} >>> Seconds elapsed: #{current_test[1][:benchmark].real.round(3)} >>> ID'ed all primes? #{current_test[1][:prime_pass?].to_s} >>> ID'ed all composites? #{current_test[1][:composite_pass?].to_s}"
   end
-  puts "#{current_test[1][:name]} >>> #{current_test[1][:benchmark]}"
 }
-
-binding.pry
