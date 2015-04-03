@@ -26,8 +26,3 @@ def sieve_of_eratosthenes(n)
   end
       return true
 end
-
-puts sieve_of_eratosthenes(2)
-puts sieve_of_eratosthenes(25)
-puts sieve_of_eratosthenes(1489)
-puts sieve_of_eratosthenes(1485)
