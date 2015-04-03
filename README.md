@@ -2,11 +2,11 @@
 
 This is a collection of primality test algorithms written in Ruby.
 
-All files in the primality_tests directory are of the form "<algorithm_name>.rb" and contain the function <algorithm_name>(n), where n is expected to be a positive integer.
+All files in the primality_tests directory are of the form "name_of_primality_test.rb" and contain the function name_of_primality_test(n), where n is expected to be a positive integer.
 
-So, for the miller_rabin test, the file is called "miller_rabin.rb" and the function within miller_rabin that determines if some positive integer n is prime is called "miller_rabin(n)". This convention must be followed for any new tests added.
+So, for the Miller-Rabin primality test, the file is called "miller_rabin.rb" and the contained function that determines if some positive integer n is prime is called "miller_rabin(n)". This convention must be followed for any new tests added.
 
-I encourage you to follow this convention and add your own prime algorithms! Please submit pull requests so that everyone can see.
+I encourage you to add your own primality tests! And please feel free to submit pull requests.
 
 # Benchmarking
 
