@@ -12,7 +12,7 @@ I encourage you to add your own primality tests! And please feel free to submit 
 
 The file "benchmarking.rb" can be used to perform benchmarking of the primality tests against one another. By default, the benchmarking test does the following:
 
-1. Generates (user input) random integers 2..(user input), stored statically as array
+1. Generates (user input) random integers '''2..(user input)''', stored statically as array
 2. For each test specified by user, runs that test's prime function for each member of the array of ints.
 
 So, to run the tests on your machine:
