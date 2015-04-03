@@ -28,10 +28,10 @@ So far, Seph's trial division implementation is *destroying* everything else.
 
 Here's some sample output for a test with 5 random primes and 5 random composites:
 
-miller_rabin >>> Seconds elapsed: 14.499 >>> ID'ed all primes? true >>> ID'ed all composites? true
-sieve_of_eratosthenes >>> Seconds elapsed: 2.585 >>> ID'ed all primes? true >>> ID'ed all composites? true
-trial_division >>> Seconds elapsed: 0.001 >>> ID'ed all primes? true >>> ID'ed all composites? true
-trial_division_with_array >>> Seconds elapsed: 0.001 >>> ID'ed all primes? true >>> ID'ed all composites? true
+*miller_rabin >>> Seconds elapsed: 14.499 >>> ID'ed all primes? true >>> ID'ed all composites? true
+*sieve_of_eratosthenes >>> Seconds elapsed: 2.585 >>> ID'ed all primes? true >>> ID'ed all composites? true
+*trial_division >>> Seconds elapsed: 0.001 >>> ID'ed all primes? true >>> ID'ed all composites? true
+*trial_division_with_array >>> Seconds elapsed: 0.001 >>> ID'ed all primes? true >>> ID'ed all composites? true
 
 It would be interesting to learn more about why the "fast" probabilistic method is so slow. Are there sluggish functions I'm unwittingly calling?
 
