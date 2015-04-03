@@ -12,13 +12,22 @@ I encourage you to add your own primality tests! And please feel free to submit 
 
 The file "benchmarking.rb" can be used to perform benchmarking of the primality tests against one another. By default, the benchmarking test does the following:
 
-1. Generates (user input) random integers '2..(user input)', stored statically as array
+1. Calls primality test on static list of 100 primes (max 10 digits)
+2. Calls primality test on static list of 100
+3. Returns benchmarking values and pass/fail
+
+Alternatively, the user can define a custom test:
+
+1. Generate (user input) random integers '2..(user input)', stored statically as array
 2. For each test specified by user, runs that test's prime function for each member of the array of ints.
+3. Compares result to trial division to test for accuracy and produce pass/fail
+
+Note that in the custom test, trial division is always performed, as it is used to check the output from other 
 
 So, to run the tests on your machine:
 
 1. Download this repo
-2. Add any algorithms you want to the primality_tests directory (NOTE: As explained above, be sure that 'prime?(n)' is defined as 'name_of_primality_test(n)' and file is 'name_of_primality_test.rb')
+2. Add any primality tests you want to benchmark to the primality_tests directory (NOTE: As explained above, be sure that 'prime?(n)' is defined as 'name_of_primality_test(n)' and file is 'name_of_primality_test.rb')
 3. Run 'benchmarking.rb'
 
 TODO:

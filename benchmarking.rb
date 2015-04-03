@@ -34,6 +34,21 @@ range = (1..num_ints_to_test)
   ints_to_test << rand(2..max_int_to_test)
 }
 
+# Manual addition
+puts ints_to_test.inspect
+
+add_num = true
+while add_num
+  puts "Would you like to add a specific number? (y/n)"
+  answer = gets.chomp
+  if answer == "y"
+    puts "Enter number:"
+    ints_to_test << gets.chomp.to_i
+  else
+    add_num = false
+  end
+end
+
 # run a test given test name
 def run_test(tests, ints_to_test, current_test_name)
   require "./primality_tests/" + current_test_name + ".rb"
@@ -51,3 +66,5 @@ tests.each {|current_test|
   end
   puts "#{current_test[1][:name]} >>> #{current_test[1][:benchmark]}"
 }
+
+binding.pry
